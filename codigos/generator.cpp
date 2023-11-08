@@ -3,18 +3,34 @@
 #include <string.h>
 #include <ctype.h>
 #include <time.h>
-#define LEN 11
-#define CONST 48
-#define MAX_NUMBER 9
 
-/*---------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
 
-char entradaNaoTratada[LEN];
-char entradaTratada[LEN];
+#define LEN 11          // Comprimento máximo de um CPF
+#define CONST 48        // Constante de conversão, para validar CPFs digitados pelo usuário
+#define MAX_NUMBER 9    // Número máximo gerado a partir do srand
+
+/*-------------------------------------------------------------------------------------------*/
+
+char entradaNaoTratada[LEN], entradaTratada[LEN];
 int intCode, i, j = 0;
 int numerosAleatorios[LEN], cpfCompleto[10][LEN];
 
-/*---------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	Ideias para a v1.1:
+	
+  - criar uma função para os números aleatórios, função de validação, função de entrada
+  - repensar o método de obtenção dos números pseudo-aleatórios, atualmente é muito repetitivo
+  - formatar melhor o código, tornando a leitura mais simples e eficiente
+  - adicionar melhores formas de backup para impedir o código de quebrar
+  - otimizar os processos de obtenção dos CPFs, reduzindo linhas de código (atualmente 33 linhas)
+  - otimizar o switch de escolha, pensando em como melhorar o processo de apresentação de dados
+  - menos uso de variáveis globais, embora não afete o código, sinto que poderia ser melhor
+	
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 float generator(int nothing){
     srand(time(NULL));
@@ -85,18 +101,12 @@ int main(void){
                     printf("\n");
                 }
             }; break;
+            // Outras funções a serem escritas, porém, após análise achei o código muito bruto e feio, vou refazer melhor
+            // Entretanto, case 2 será a função de entrada do usuário, para verificar se um CPF inserido é válido, case 3 é uma opção de escape para encerrar o código e quebrar o loop infinito
             case 2:{}; break;
             case 3: break; break;
         }
-
-
-
-
-
-
-    }
-
-    
+	}
     return 0;
 }
 
