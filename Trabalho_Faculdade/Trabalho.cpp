@@ -43,46 +43,30 @@ int dataInput(int selectDataDestiny){
     system("cls");
     fflush(stdin);
     switch(selectDataDestiny){
-        case 1:{
-        	if(patientControl < 10){
-        		printf("Digite o nome do paciente: ");
-            	fgets(notSafeInputData, MAX, stdin);
-            	for(i = 0; i < (strlen(notSafeInputData)-1); i++);{
-                	hospital.patient[patientControl][i] = notSafeInputData[i];
-            	}
-            	patientControl++;	
-			}else{
-				printf("Máximo de pacientes registrados.\n\n");
-				getch();
-			}
-            
-        } break;
-        case 2:{
-        	if(doctorControl < 10){
-        		printf("Digite o nome do médico: ");
-            	fgets(notSafeInputData, MAX, stdin);
-            	for(i = 0; i < (strlen(notSafeInputData)-1); i++){
-                	hospital.doctor[doctorControl][i] = notSafeInputData[i];
-            	}
-            	doctorControl++;	
-			}else{
-				printf("Máximo de médicos registrados.\n\n");
-				getch();	
-			}
-        } break;
-        case 3:{
-        	if(scheduleControl < 10){
-        		printf("Digite o qual consulta deseja agendar: ");
-            	fgets(notSafeInputData, MAX, stdin);
-            	for(i = 0; i < (strlen(notSafeInputData)-1); i++){
-                	hospital.schedule[scheduleControl][i] = notSafeInputData[i];
-            	}
-            	scheduleControl++;
-			}else{
-				printf("Máximo de consultas registradas.\n\n");
-				getch();
-			}
-        } break;
+        case 1:
+            printf("Digite o nome do paciente: ");
+            fgets(notSafeInputData, MAX, stdin);
+            for(i = 0; i < (strlen(notSafeInputData)-1); i++){
+                hospital.patient[patientControl][i] = notSafeInputData[i];
+            }
+            patientControl++;
+        break;
+        case 2:
+            printf("Digite o nome do médico: ");
+            fgets(notSafeInputData, MAX, stdin);
+            for(i = 0; i < (strlen(notSafeInputData)-1); i++){
+                hospital.doctor[doctorControl][i] = notSafeInputData[i];
+            }
+            doctorControl++;
+        break;
+        case 3:
+            printf("Digite o qual consulta deseja agendar: ");
+            fgets(notSafeInputData, MAX, stdin);
+            for(i = 0; i < (strlen(notSafeInputData)-1); i++){
+                hospital.schedule[scheduleControl][i] = notSafeInputData[i];
+            }
+            scheduleControl++;
+        break;
     }
     return 0;
 }
@@ -91,7 +75,7 @@ int dataOutput(int selectDataOutput){
 	setlocale(LC_ALL, "Portuguese");
     system("cls");
     switch(selectDataOutput){
-        case 1:{
+        case 1:
             if(patientControl > 0){
                 printf("Lista de pacientes cadastrados:\n\n");
                 for(i = 0; i < patientControl; i++){
@@ -103,8 +87,8 @@ int dataOutput(int selectDataOutput){
                 printf("Nenhum paciente cadastrado.\n\n");
                 getch();
             }
-        }; break;
-        case 2:{
+        break;
+        case 2:
             if(doctorControl > 0){
                 printf("Lista de médicos cadastrados:\n\n");
                 for(i = 0; i < doctorControl; i++){
@@ -116,8 +100,8 @@ int dataOutput(int selectDataOutput){
                 printf("Nenhum médico cadastrado.\n\n");
                 getch();
             }
-        }; break;
-        case 3:{
+        break;
+        case 3:
             if(scheduleControl > 0){
                 printf("Lista de consultas agendadas:\n\n");
                 for(i = 0; i < scheduleControl; i++){
@@ -129,7 +113,7 @@ int dataOutput(int selectDataOutput){
                 printf("Nenhuma consulta agendada.\n\n");
                 getch();
             }
-        }; break;
+        break;
     }
     return 0;
 }
